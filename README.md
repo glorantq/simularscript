@@ -1,0 +1,2 @@
+# simularscript
+Hinnye jelentem alássan
