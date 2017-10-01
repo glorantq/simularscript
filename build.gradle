@@ -84,6 +84,7 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+
         compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.4"
 
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
@@ -101,6 +102,8 @@ project(":core") {
         compile "org.luaj:luaj-jme:$luajVersion"
 
         compile "com.googlecode.json-simple:json-simple:1.1.1"
+
+        compile "org.apache.commons:commons-lang3:3.6"
     }
 }
 

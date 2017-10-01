@@ -4,10 +4,14 @@ import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import io.glorantq.simularscript.config.JSONConfig
+import io.glorantq.simularscript.utils.hexToOGL
+import io.glorantq.simularscript.utils.hexToRGB
+import io.glorantq.simularscript.utils.rgbToOGL
 import io.glorantq.simularscript.utils.ssLogger
 import ktx.app.KtxGame
 import ktx.app.emptyScreen
 import ktx.log.Logger
+import java.util.*
 
 class SSEngine private constructor() : KtxGame<Screen>() {
     private object Singleton {
