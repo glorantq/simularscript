@@ -26,3 +26,7 @@ fun Int.hexToOGL(): FloatArray {
 
     return floatArrayOf(rgb[0].rgbToOGL(), rgb[1].rgbToOGL(), rgb[2].rgbToOGL())
 }
+
+fun Number.roundToNearest(x: Int): Number = Math.round(toFloat() / x.toFloat()) * x.toFloat()
+fun Number.floorToNearest(x: Int): Number = Math.floor(toDouble() / x.toFloat()) * x.toFloat()
+fun Number.ceilToNearest(x: Int): Number = Math.ceil(toDouble() / x.toFloat()) * x.toFloat()

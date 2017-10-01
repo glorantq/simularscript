@@ -4,10 +4,7 @@ import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
 import io.glorantq.simularscript.config.JSONConfig
-import io.glorantq.simularscript.utils.hexToOGL
-import io.glorantq.simularscript.utils.hexToRGB
-import io.glorantq.simularscript.utils.rgbToOGL
-import io.glorantq.simularscript.utils.ssLogger
+import io.glorantq.simularscript.utils.*
 import ktx.app.KtxGame
 import ktx.app.emptyScreen
 import ktx.log.Logger
@@ -24,15 +21,13 @@ class SSEngine private constructor() : KtxGame<Screen>() {
 
     private val logger: Logger = ssLogger<SSEngine>()
 
-    lateinit var engineConfig: JSONConfig
-        private set
-
     override fun create() {
         if (Gdx.app.type == Application.ApplicationType.Desktop) {
             Gdx.app.logLevel = Application.LOG_DEBUG
         }
 
         logger.info { "Starting Engine..." }
+
         setEmptyScreen()
     }
 
