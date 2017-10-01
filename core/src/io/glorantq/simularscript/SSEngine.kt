@@ -10,15 +10,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import io.glorantq.simularscript.config.JSONConfig
+import io.glorantq.simularscript.engine.GameMeta
 import io.glorantq.simularscript.engine.Window
-import io.glorantq.simularscript.utils.EngineInitialisationException
-import io.glorantq.simularscript.utils.g
-import io.glorantq.simularscript.utils.hasKeys
-import io.glorantq.simularscript.utils.ssLogger
+import io.glorantq.simularscript.screens.GameScreen
+import io.glorantq.simularscript.utils.*
 import ktx.app.KtxGame
 import ktx.app.emptyScreen
 import ktx.log.Logger
+import org.json.simple.JSONArray
 import org.json.simple.JSONObject
+import org.luaj.vm2.ast.Str
 
 class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firstScreen = emptyScreen()) {
     private object Singleton {
@@ -33,6 +34,8 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
 
     lateinit var engineConfig: JSONConfig
         private set
+    lateinit var gameMeta: GameMeta
+        private set
 
     lateinit var camera: OrthographicCamera
         private set
@@ -44,7 +47,10 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
     lateinit var window: Window
         private set
 
-    private lateinit var test: Texture
+    private lateinit var baseColour: FloatArray
+
+    lateinit var gameScreen: GameScreen
+        private set
 
     override fun create() {
         if (Gdx.app.type == Application.ApplicationType.Desktop) {
@@ -58,12 +64,11 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
 
         engineConfig = JSONConfig("config.json")
 
-        if(!engineConfig.contains("window")) {
-            throw EngineInitialisationException("Cannot get window object from config!")
+        if(!engineConfig.hasKeys("window", "game", "meta")) {
+            throw EngineInitialisationException("Invalid game config!")
         }
 
         val windowConfig: JSONObject = engineConfig.g("window")
-
         if(!windowConfig.hasKeys("width", "height", "title", "viewport", "fullscreen")) {
             throw EngineInitialisationException("Invalid window configuration!")
         }
@@ -84,11 +89,36 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
             else -> throw EngineInitialisationException("Unsupported viewport!")
         }
 
-        test = Texture("badlogic.jpg")
+        logger.info { "Window Configuration: $window" }
+
+        val gameConfig: JSONObject = engineConfig.g("game")
+        if(!gameConfig.hasKeys("baseColour", "useVsync", "scripting")) {
+            throw EngineInitialisationException("Invalid game configuration!")
+        }
+
+        Gdx.graphics.setVSync(gameConfig.g("useVsync"))
+        baseColour = (gameConfig["baseColour"] as Number).toInt().hexToOGL()
+
+        val metaConfig: JSONObject = engineConfig.g("meta")
+        gameMeta = GameMeta(metaConfig.g("name"), metaConfig.g("packageName"), metaConfig.g("author"))
+
+        logger.info { "Game Meta: $gameMeta" }
+
+        val scriptingConfig: JSONObject = gameConfig.g("scripting")
+        if(!scriptingConfig.hasKeys("sourceDirectory", "sourceFiles", "mainFile")) {
+            throw EngineInitialisationException("Invalid scripting config")
+        }
+
+        val sourceFiles: ArrayList<String> = arrayListOf()
+        (scriptingConfig["sourceFiles"] as JSONArray).mapTo(sourceFiles) { it.toString() }
+
+        gameScreen = GameScreen(scriptingConfig.g("sourceDirectory"), scriptingConfig.g("mainFile"), sourceFiles)
+        setScreen(gameScreen)
+        gameScreen.start()
     }
 
     override fun render() {
-        ktx.app.clearScreen(1f, 1f, 1f)
+        ktx.app.clearScreen(baseColour[0], baseColour[1], baseColour[2])
 
         camera.position.x = (window.width / 2).toFloat()
         camera.position.y = (window.height / 2).toFloat()
@@ -98,7 +128,6 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
         spriteBatch.begin()
 
         super.render()
-        spriteBatch.draw(test, 0f, 0f)
 
         spriteBatch.end()
     }
@@ -108,9 +137,9 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
         viewport.update(width, height)
     }
 
-    private fun setEmptyScreen() {
+    fun setScreen(screen: Screen) {
         currentScreen.hide()
-        currentScreen = emptyScreen()
+        currentScreen = screen
         currentScreen.resize(Gdx.graphics.width, Gdx.graphics.height)
         currentScreen.show()
     }

@@ -24,3 +24,10 @@ class EngineException : Exception {
     constructor(cause: Exception): super(cause)
     constructor(): super()
 }
+
+class ScriptingException : Exception {
+    constructor(message: String): super(message)
+    constructor(message: String, cause: Exception): super(message, cause)
+    constructor(cause: Exception): super(cause)
+    constructor(): super()
+}

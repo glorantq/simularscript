@@ -38,4 +38,5 @@ class JSONConfig(handle: FileHandle) {
     operator fun get(key: String): Any? = contents[key]
     fun <E> g(key: String): E = contents[key] as E
     fun contains(key: String): Boolean = contents.containsKey(key)
+    fun hasKeys(vararg keys: String): Boolean = !keys.any { !contains(it) }
 }

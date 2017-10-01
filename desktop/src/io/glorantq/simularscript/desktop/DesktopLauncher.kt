@@ -9,7 +9,6 @@ fun main(arg: Array<String>) {
     config.title = "SSEngine"
     config.width = 1
     config.height = 1
-    config.vSyncEnabled = true
     config.resizable = false
     LwjglApplication(SSEngine.INSTANCE, config)
 }

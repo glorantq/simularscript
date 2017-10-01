@@ -5,6 +5,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder
 /**
  * Created by Gerber Lóránt on 2017. 10. 01..
  */
-class Window(val width: Int, val height: Int, val fullscreen: Boolean, val title: String) {
+class GameMeta(val name: String, val packageName: String, val author: String) {
     override fun toString(): String = ToStringBuilder.reflectionToString(this)
 }

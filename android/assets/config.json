@@ -4,6 +4,27 @@
     "height": 720,
     "title": "SimularScript Engine",
     "viewport": "fit",
-    "fullscreen": true
+    "fullscreen": false
+  },
+
+
+  "game": {
+    "baseColour": 16711935,
+    "useVsync": true,
+
+    "scripting": {
+      "sourceDirectory": "src/",
+      "sourceFiles": [
+        "main",
+        "screenFile"
+      ],
+      "mainFile": "main"
+    }
+  },
+
+  "meta": {
+    "name": "SimularScript Engine",
+    "packageName": "io.glorantq.simularscript",
+    "author": "@glorantq"
   }
 }
