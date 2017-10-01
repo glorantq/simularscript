@@ -1,6 +1,7 @@
 package io.glorantq.simularscript.utils
 
 import org.apache.commons.lang3.StringUtils
+import org.json.simple.JSONObject
 
 /**
  * Created by Gerber Lóránt on 2017. 10. 01..
@@ -30,3 +31,6 @@ fun Int.hexToOGL(): FloatArray {
 fun Number.roundToNearest(x: Int): Number = Math.round(toFloat() / x.toFloat()) * x.toFloat()
 fun Number.floorToNearest(x: Int): Number = Math.floor(toDouble() / x.toFloat()) * x.toFloat()
 fun Number.ceilToNearest(x: Int): Number = Math.ceil(toDouble() / x.toFloat()) * x.toFloat()
+
+fun JSONObject.hasKeys(vararg keys: String): Boolean = !keys.any { !containsKey(it) }
+fun <E> JSONObject.g(key: String): E = get(key) as E
