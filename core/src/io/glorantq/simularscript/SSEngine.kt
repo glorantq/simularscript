@@ -1,17 +1,17 @@
 package io.glorantq.simularscript
 
-import com.badlogic.gdx.Application
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Screen
+import com.badlogic.gdx.*
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.input.GestureDetector
 import com.badlogic.gdx.utils.viewport.FitViewport
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.badlogic.gdx.utils.viewport.Viewport
 import io.glorantq.simularscript.config.JSONConfig
 import io.glorantq.simularscript.engine.GameMeta
 import io.glorantq.simularscript.engine.Window
+import io.glorantq.simularscript.input.GestureHandler
+import io.glorantq.simularscript.screens.CrashScreen
 import io.glorantq.simularscript.screens.GameScreen
 import io.glorantq.simularscript.utils.*
 import ktx.app.KtxGame
@@ -19,7 +19,6 @@ import ktx.app.emptyScreen
 import ktx.log.Logger
 import org.json.simple.JSONArray
 import org.json.simple.JSONObject
-import org.luaj.vm2.ast.Str
 
 class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firstScreen = emptyScreen()) {
     private object Singleton {
@@ -28,6 +27,13 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
 
     companion object {
         val INSTANCE: SSEngine by lazy { Singleton.INSTANCE }
+        val VERSION: String = "3.0-beta1"
+
+        val WIDTH: Float
+            get() = INSTANCE.window.width.toFloat()
+
+        val HEIGHT: Float
+            get() = INSTANCE.window.height.toFloat()
     }
 
     private val logger: Logger = ssLogger<SSEngine>()
@@ -53,95 +59,128 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
         private set
 
     override fun create() {
-        if (Gdx.app.type == Application.ApplicationType.Desktop) {
-            Gdx.app.logLevel = Application.LOG_DEBUG
+        try {
+            if (Gdx.app.type == Application.ApplicationType.Desktop) {
+                Gdx.app.logLevel = Application.LOG_DEBUG
+            }
+
+            logger.info { "Starting Engine..." }
+
+            camera = OrthographicCamera()
+            spriteBatch = SpriteBatch()
+
+            val multiplexer = InputMultiplexer(GestureDetector(GestureHandler.INSTANCE), InputAdapter())
+            Gdx.input.inputProcessor = multiplexer
+
+            engineConfig = JSONConfig("config.json")
+
+            if (!engineConfig.hasKeys("window", "game", "meta")) {
+                throw EngineInitialisationException("Invalid game config!")
+            }
+
+            val windowConfig: JSONObject = engineConfig.g("window")
+            if (!windowConfig.hasKeys("width", "height", "title", "viewport", "fullscreen")) {
+                throw EngineInitialisationException("Invalid window configuration!")
+            }
+
+            window = Window(windowConfig.g("width"), windowConfig.g("height"), windowConfig.g("fullscreen"), windowConfig.g("title"))
+
+            Gdx.graphics.setTitle(window.title)
+
+            if (window.fullscreen) {
+                Gdx.graphics.setFullscreenMode(Gdx.graphics.displayMode)
+            } else {
+                Gdx.graphics.setWindowedMode(window.width, window.height)
+            }
+
+            viewport = when (windowConfig["viewport"].toString()) {
+                "fit" -> FitViewport(window.width.toFloat(), window.height.toFloat(), camera)
+                "stretch" -> StretchViewport(window.width.toFloat(), window.height.toFloat(), camera)
+                else -> throw EngineInitialisationException("Unsupported viewport!")
+            }
+
+            logger.info { "Window Configuration: $window" }
+
+            val gameConfig: JSONObject = engineConfig.g("game")
+            if (!gameConfig.hasKeys("baseColour", "useVsync", "scripting")) {
+                throw EngineInitialisationException("Invalid game configuration!")
+            }
+
+            Gdx.graphics.setVSync(gameConfig.g("useVsync"))
+            logger.info { "before" }
+            // TODO: Fix this fucking bullshit
+            baseColour = /*(gameConfig["baseColour"] as Number).toInt().hexToOGL()*/ floatArrayOf(0f, 0f, 0f)
+            logger.info { "after" }
+
+            val metaConfig: JSONObject = engineConfig.g("meta")
+            gameMeta = GameMeta(metaConfig.g("name"), metaConfig.g("packageName"), metaConfig.g("author"))
+
+            logger.info { "Game Meta: $gameMeta" }
+
+            val scriptingConfig: JSONObject = gameConfig.g("scripting")
+            if (!scriptingConfig.hasKeys("sourceDirectory", "sourceFiles", "mainFile")) {
+                throw EngineInitialisationException("Invalid scripting config")
+            }
+
+            val sourceFiles: ArrayList<String> = arrayListOf()
+            (scriptingConfig["sourceFiles"] as JSONArray).mapTo(sourceFiles) { it.toString() }
+
+            camera.position.set((window.width / 2).toFloat(), (window.height / 2).toFloat(), 0f)
+
+            gameScreen = GameScreen(scriptingConfig.g("sourceDirectory"), scriptingConfig.g("mainFile"), sourceFiles)
+            gameScreen.start()
+            setScreen(gameScreen)
+        } catch (e: Exception) {
+            crash(e)
+
+            Gdx.input.inputProcessor = InputMultiplexer()
         }
-
-        logger.info { "Starting Engine..." }
-
-        camera = OrthographicCamera()
-        spriteBatch = SpriteBatch()
-
-        engineConfig = JSONConfig("config.json")
-
-        if(!engineConfig.hasKeys("window", "game", "meta")) {
-            throw EngineInitialisationException("Invalid game config!")
-        }
-
-        val windowConfig: JSONObject = engineConfig.g("window")
-        if(!windowConfig.hasKeys("width", "height", "title", "viewport", "fullscreen")) {
-            throw EngineInitialisationException("Invalid window configuration!")
-        }
-
-        window = Window(windowConfig.g("width"), windowConfig.g("height"), windowConfig.g("fullscreen"), windowConfig.g("title"))
-
-        Gdx.graphics.setTitle(window.title)
-
-        if(window.fullscreen) {
-            Gdx.graphics.setFullscreenMode(Gdx.graphics.displayMode)
-        } else {
-            Gdx.graphics.setWindowedMode(window.width, window.height)
-        }
-
-        viewport = when(windowConfig["viewport"].toString()) {
-            "fit" -> FitViewport(window.width.toFloat(), window.height.toFloat(), camera)
-            "stretch" -> StretchViewport(window.width.toFloat(), window.height.toFloat(), camera)
-            else -> throw EngineInitialisationException("Unsupported viewport!")
-        }
-
-        logger.info { "Window Configuration: $window" }
-
-        val gameConfig: JSONObject = engineConfig.g("game")
-        if(!gameConfig.hasKeys("baseColour", "useVsync", "scripting")) {
-            throw EngineInitialisationException("Invalid game configuration!")
-        }
-
-        Gdx.graphics.setVSync(gameConfig.g("useVsync"))
-        baseColour = (gameConfig["baseColour"] as Number).toInt().hexToOGL()
-
-        val metaConfig: JSONObject = engineConfig.g("meta")
-        gameMeta = GameMeta(metaConfig.g("name"), metaConfig.g("packageName"), metaConfig.g("author"))
-
-        logger.info { "Game Meta: $gameMeta" }
-
-        val scriptingConfig: JSONObject = gameConfig.g("scripting")
-        if(!scriptingConfig.hasKeys("sourceDirectory", "sourceFiles", "mainFile")) {
-            throw EngineInitialisationException("Invalid scripting config")
-        }
-
-        val sourceFiles: ArrayList<String> = arrayListOf()
-        (scriptingConfig["sourceFiles"] as JSONArray).mapTo(sourceFiles) { it.toString() }
-
-        gameScreen = GameScreen(scriptingConfig.g("sourceDirectory"), scriptingConfig.g("mainFile"), sourceFiles)
-        setScreen(gameScreen)
-        gameScreen.start()
     }
 
     override fun render() {
-        ktx.app.clearScreen(baseColour[0], baseColour[1], baseColour[2])
+        if(currentScreen is CrashScreen) {
+            currentScreen.render(Gdx.graphics.deltaTime)
+            return
+        }
 
-        camera.position.x = (window.width / 2).toFloat()
-        camera.position.y = (window.height / 2).toFloat()
-        camera.update()
+        try {
+            ktx.app.clearScreen(baseColour[0], baseColour[1], baseColour[2])
 
-        spriteBatch.projectionMatrix = camera.combined
-        spriteBatch.begin()
+            camera.update()
 
-        super.render()
+            spriteBatch.projectionMatrix = camera.combined
+            spriteBatch.begin()
 
-        spriteBatch.end()
+            super.render()
+
+            spriteBatch.end()
+
+            GestureHandler.update()
+        } catch (e: Exception) {
+            crash(e)
+        }
     }
 
     override fun resize(width: Int, height: Int) {
+        if(currentScreen is CrashScreen) {
+            currentScreen.resize(width, height)
+            return
+        }
+
         super.resize(width, height)
         viewport.update(width, height)
     }
 
-    fun setScreen(screen: Screen) {
+    private fun setScreen(screen: Screen) {
         currentScreen.hide()
         currentScreen = screen
         currentScreen.resize(Gdx.graphics.width, Gdx.graphics.height)
         currentScreen.show()
+    }
+
+    fun crash(e: Exception) {
+        setScreen(CrashScreen(e))
+        e.printStackTrace()
     }
 
     override fun <Type : Screen> setScreen(type: Class<Type>) {

@@ -27,21 +27,21 @@ class LogApi : TwoArgFunction() {
     private class Info : OneArgFunction() {
         override fun call(message: LuaValue): LuaValue {
             logger.info { message.tojstring() }
-            return LuaValue.NIL
+            return LuaValue.NONE
         }
     }
 
     private class Debug : OneArgFunction() {
         override fun call(message: LuaValue): LuaValue {
             logger.debug { message.tojstring() }
-            return LuaValue.NIL
+            return LuaValue.NONE
         }
     }
 
     private class Error : OneArgFunction() {
         override fun call(message: LuaValue): LuaValue {
             logger.error { message.tojstring() }
-            return LuaValue.NIL
+            return LuaValue.NONE
         }
     }
 }

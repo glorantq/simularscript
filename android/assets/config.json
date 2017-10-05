@@ -1,22 +1,20 @@
 {
   "window": {
-    "width": 1280,
-    "height": 720,
+    "width": 640,
+    "height": 480,
     "title": "SimularScript Engine",
     "viewport": "fit",
     "fullscreen": false
   },
 
-
   "game": {
-    "baseColour": 16711935,
+    "baseColour": 0,
     "useVsync": true,
 
     "scripting": {
       "sourceDirectory": "src/",
       "sourceFiles": [
-        "main",
-        "screenFile"
+        "main"
       ],
       "mainFile": "main"
     }

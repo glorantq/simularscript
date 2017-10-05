@@ -14,7 +14,9 @@ import org.luaj.vm2.lib.TwoArgFunction
 class MultifileApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {
         val library: LuaTable = LuaValue.tableOf()
-        library.set("getFile", GetFile())
+        val getFile = GetFile()
+        library.set("getFile", getFile)
+        env.set("__", getFile)
         env.set("Multifile", library)
         return library
     }
@@ -28,7 +30,7 @@ class MultifileApi : TwoArgFunction() {
                 val script: LuaScript = gameScreen.scripts[name]!!
                 LuaLinkerTable(script.context, name)
             } else {
-                LuaValue.tableOf()
+                LuaValue.NONE
             }
         }
     }

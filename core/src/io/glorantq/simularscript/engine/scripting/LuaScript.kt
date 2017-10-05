@@ -2,7 +2,9 @@ package io.glorantq.simularscript.engine.scripting
 
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Version
 import com.badlogic.gdx.files.FileHandle
+import io.glorantq.simularscript.SSEngine
 import io.glorantq.simularscript.utils.ScriptingException
 import org.luaj.vm2.LuaClosure
 import org.luaj.vm2.LuaValue
@@ -34,6 +36,9 @@ class LuaScript(val script: FileHandle, vararg includes: String) {
             val requirementClosure = LuaClosure(requirement, context)
             requirementClosure.call()
         }
+
+        context.set("_SS_VERSION", SSEngine.VERSION)
+        context.set("_GDX_VERSION", Version.VERSION)
 
         luaCode = LuaC.instance.compile(script.readString("UTF-8").byteInputStream(), "script-${script.nameWithoutExtension()}")
         LuaClosure(luaCode, context).call()

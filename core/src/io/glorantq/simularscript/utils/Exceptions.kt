@@ -31,3 +31,10 @@ class ScriptingException : Exception {
     constructor(cause: Exception): super(cause)
     constructor(): super()
 }
+
+class GameException : Exception {
+    constructor(message: String): super(message)
+    constructor(message: String, cause: Exception): super(message, cause)
+    constructor(cause: Exception): super(cause)
+    constructor(): super()
+}
