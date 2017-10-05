@@ -29,6 +29,11 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
     private var onClickFunction: LuaValue = LuaValue.NONE
     private var longClickFunction: LuaValue = LuaValue.NONE
 
+    var visible: Boolean = true
+        get() = if(disposed) false else field
+    var disposed: Boolean = false
+        private set
+
     init {
         val handle: FileHandle = Gdx.files.internal(path)
         backingSprite = Sprite(Texture(handle))
@@ -53,21 +58,30 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
 
         set("dispose", Dispose(this))
 
+        set("setVisibility", SetVisibility(this))
+        set("isVisible", IsVisible(this))
+
         GestureHandler.register(this)
     }
 
-    override fun tap(x: Float, y: Float, button: Int) {
-        if (onClickFunction !is LuaFunction) return
+    override fun tap(x: Float, y: Float, button: Int): Boolean {
+        if (onClickFunction !is LuaFunction) return false
         if (backingSprite.boundingRectangle.contains(x, y)) {
-            onClickFunction.call(LuaValue.valueOf(button))
+            onClickFunction.call(LuaValue.valueOf(button), this)
+            return true
         }
+
+        return false
     }
 
-    override fun longPress(x: Float, y: Float) {
-        if(longClickFunction !is LuaFunction) return
+    override fun longPress(x: Float, y: Float): Boolean {
+        if(longClickFunction !is LuaFunction) return false
         if (backingSprite.boundingRectangle.contains(x, y)) {
-            longClickFunction.call()
+            longClickFunction.call(this)
+            return true
         }
+
+        return false
     }
 
     override fun set(key: LuaValue, value: LuaValue) {
@@ -80,7 +94,9 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
 
     private class Draw(private val sprite: LuaSprite) : ZeroArgFunction() {
         override fun call(): LuaValue {
-            sprite.backingSprite.draw(engine.spriteBatch)
+            if(sprite.visible) {
+                sprite.backingSprite.draw(engine.spriteBatch)
+            }
             return LuaValue.NONE
         }
     }
@@ -166,8 +182,21 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
     private class Dispose(private val sprite: LuaSprite) : ZeroArgFunction() {
         override fun call(): LuaValue {
             GestureHandler.remove(sprite)
+            sprite.disposed = true
 
             return LuaValue.NONE
         }
+    }
+
+    private class SetVisibility(private val sprite: LuaSprite): OneArgFunction() {
+        override fun call(arg: LuaValue): LuaValue {
+            sprite.visible = arg.checkboolean()
+
+            return LuaValue.NONE
+        }
+    }
+
+    private class IsVisible(private val sprite: LuaSprite): ZeroArgFunction() {
+        override fun call(): LuaValue = LuaValue.valueOf(sprite.visible)
     }
 }

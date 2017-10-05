@@ -5,23 +5,77 @@ require "io.glorantq.simularscript.engine.api.MathApi"
 require "io.glorantq.simularscript.engine.api.GameApi"
 require "io.glorantq.simularscript.engine.api.CameraApi"
 
-local testSprite
-local testSpritePos
+local sprites = {}
+local winScreen
 
-local rot = Camera.getBaseRotation()
+local speed = 500
 
 function ss_main()
-    testSprite = Gfx.makeSprite("badlogic.jpg")
-    testSprite.clickHandler = onClick_testSprite
-    testSpritePos = Math.vec2(Gfx.getWidth() / 2 - testSprite.getWidth() / 2, Gfx.getHeight() / 2 - testSprite.getHeight() / 2)
-    testSprite.setPosition(testSpritePos)
+    sprites[-1] = 200
+
+    for i = 1, sprites[-1] do
+        local sprite = Graphics.makeSprite("badlogic.jpg")
+        sprite.setSize(Math.vec2(64, 64))
+        sprite.setPosition(Math.vec2(Math.random(Graphics.getWidth() - 64), Math.random(Graphics.getHeight() - 64)))
+        sprite.clickHandler = function()
+            sprite.dispose()
+            sprites[i] = nil
+        end
+        sprite.xDirection = Math.choose(1, -1)
+        sprite.yDirection = Math.choose(1, -1)
+        sprites[i] = sprite
+    end
+
+    winScreen = __ "winScreen"
 end
 
 function ss_render()
-    testSprite.draw()
+    if (check_win()) then
+        if not winScreen.initialised then
+            winScreen.main()
+        end
 
-    Camera.rotate(rot)
-    Log.info(Camera.getRotation())
+        winScreen.render()
+        return
+    end
 
-    rot = Camera.getRotation() + 1
+    for i = 1, sprites[-1] do
+        if sprites[i] ~= nil then
+            local sprite = sprites[i]
+            sprite.draw()
+
+            local position = sprites[i].getPosition()
+            local change = Math.vec2(speed * Graphics.getDeltaTime() * sprite.xDirection, speed * Graphics.getDeltaTime() * sprite.yDirection)
+            position = position.add(change)
+            sprite.setPosition(position)
+
+            if position.x > Graphics.getWidth() - sprite.getWidth() then
+                sprite.xDirection = -1
+            end
+
+            if position.x < 0 then
+                sprite.xDirection = 1
+            end
+
+            if position.y > Graphics.getHeight() - sprites[i].getHeight() then
+                sprite.yDirection = sprite.yDirection * -1
+            end
+
+            if position.y < 0 then
+                sprite.yDirection = 1
+            end
+        end
+    end
+
+    Log.info("FPS: " .. Graphics.getFPS())
+end
+
+function check_win()
+    for i = 1, sprites[-1] do
+        if (sprites[i] ~= nil and sprites[i].isVisible()) then
+            return false
+        end
+    end
+
+    return true
 end

@@ -1,7 +1,7 @@
 {
   "window": {
-    "width": 640,
-    "height": 480,
+    "width": 1280,
+    "height": 720,
     "title": "SimularScript Engine",
     "viewport": "fit",
     "fullscreen": false
@@ -14,7 +14,8 @@
     "scripting": {
       "sourceDirectory": "src/",
       "sourceFiles": [
-        "main"
+        "main",
+        "winScreen"
       ],
       "mainFile": "main"
     }

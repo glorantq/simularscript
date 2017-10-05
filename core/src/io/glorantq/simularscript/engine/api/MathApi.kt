@@ -9,6 +9,7 @@ import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.TwoArgFunction
 import org.luaj.vm2.lib.VarArgFunction
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by Gerber Lóránt on 2017. 10. 02..
@@ -39,6 +40,7 @@ class MathApi : TwoArgFunction() {
         library.set("sin", Sin())
         library.set("sqrt", Sqrt())
         library.set("tan", Tan())
+        library.set("choose", Choose(r.random))
         env.set("Math", library)
         return library
     }
@@ -185,6 +187,22 @@ class MathApi : TwoArgFunction() {
             val seed = arg.checklong()
             random.random = Random(seed)
             return LuaValue.NONE
+        }
+    }
+
+    private class Choose(private val random: Random) : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            if(args.narg() < 1) {
+                argerror("actual arguments")
+                return LuaValue.varargsOf(arrayOf(LuaValue.NONE))
+            }
+
+            val kotlinArgs: ArrayList<Double> = arrayListOf()
+            (1..args.narg()).mapTo(kotlinArgs) { args.checkdouble(it) }
+
+            println(kotlinArgs.size)
+
+            return LuaValue.varargsOf(arrayOf(LuaValue.valueOf(kotlinArgs[random.nextInt(kotlinArgs.size)])))
         }
     }
 }

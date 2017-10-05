@@ -17,20 +17,16 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
     companion object {
         val INSTANCE: GestureHandler by lazy { Singleton.INSTANCE }
 
-        private val logger: Logger = ssLogger<GestureHandler>()
-
         private val listeners: ArrayList<InputListener> = ArrayList()
         private val toRemove: ArrayList<InputListener> = ArrayList()
         private val toAdd: ArrayList<InputListener> = ArrayList()
 
         fun register(listener: InputListener) {
             toAdd.add(listener)
-            logger.debug { "Registered InputListener ${listener::class.simpleName}" }
         }
 
         fun remove(listener: InputListener) {
             toRemove.add(listener)
-            logger.debug { "Removed InputListener ${listener::class.simpleName}" }
         }
 
         fun update() {
@@ -46,7 +42,9 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
             val realPos: Vector2 = unproject(x, y)
 
             for (listener in listeners) {
-                listener.tap(realPos.x, realPos.y, button)
+                if(listener.tap(realPos.x, realPos.y, button)) {
+                    break
+                }
             }
         } catch (e: Exception) {
             SSEngine.INSTANCE.crash(e)
@@ -61,7 +59,9 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
             val realPos: Vector2 = unproject(x, y)
 
             for (listener in listeners) {
-                listener.longPress(realPos.x, realPos.y)
+                if(listener.longPress(realPos.x, realPos.y)) {
+                    break
+                }
             }
         } catch (e: Exception) {
             SSEngine.INSTANCE.crash(e)
