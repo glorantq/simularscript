@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GameScreen - core</title>
+<link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">io.glorantq.simularscript.screens</a>&nbsp;/&nbsp;<a href=".">GameScreen</a><br/>
+<br/>
+<h1>GameScreen</h1>
+<code><span class="keyword">class </span><span class="identifier">GameScreen</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">KtxScreen</span></code>
+<p>Screen compiling and running the game scripts</p>
+<h3>Parameters</h3>
+<p><a name="sourceFolder"></a>
+<code>sourceFolder</code> - Folder to search for the scripts in</p>
+<p><a name="mainScript"></a>
+<code>mainScript</code> - Name of the main script</p>
+<p><a name="scriptFiles"></a>
+<code>scriptFiles</code> - Names of the files to load</p>
+<p><strong>Author</strong><br/>
+Gerber Lóránt Viktor</p>
+<p><strong>Since</strong><br/>
+3.0-beta1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GameScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.GameScreen$<init>(kotlin.String, kotlin.String, kotlin.collections.List((kotlin.String)))/sourceFolder">sourceFolder</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.GameScreen$<init>(kotlin.String, kotlin.String, kotlin.collections.List((kotlin.String)))/mainScript">mainScript</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.GameScreen$<init>(kotlin.String, kotlin.String, kotlin.collections.List((kotlin.String)))/scriptFiles">scriptFiles</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Screen compiling and running the game scripts</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="includes.html">includes</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">includes</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Array of all the APIs provided by the engine</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="logger.html">logger</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">logger</span><span class="symbol">: </span><span class="identifier">Logger</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="main-function.html">mainFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">mainFunction</span><span class="symbol">: </span><span class="identifier">LuaFunction</span></code>
+<p>Entry point of the main script</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="main-script.html">mainScript</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">mainScript</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="render-function.html">renderFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">renderFunction</span><span class="symbol">: </span><span class="identifier">LuaFunction</span></code>
+<p>Render function of the main script</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="script-files.html">scriptFiles</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">scriptFiles</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="scripts.html">scripts</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">scripts</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-hash-map/index.html"><span class="identifier">HashMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="../../io.glorantq.simularscript.engine.scripting/-lua-script/index.html"><span class="identifier">LuaScript</span></a><span class="symbol">&gt;</span></code>
+<p>Map of all the compiled scripts</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="source-folder.html">sourceFolder</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">sourceFolder</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="render.html">render</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">render</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.GameScreen$render(kotlin.Float)/delta">delta</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CrashScreen - core</title>
+<link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">io.glorantq.simularscript.screens</a>&nbsp;/&nbsp;<a href=".">CrashScreen</a><br/>
+<br/>
+<h1>CrashScreen</h1>
+<code><span class="keyword">class </span><span class="identifier">CrashScreen</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">KtxScreen</span></code>
+<p>A screen shown when an uncaught exception is thrown. Completely independent from main engine code.</p>
+<p><strong>Author</strong><br/>
+Gerber Lóránt Viktor</p>
+<p><strong>Since</strong><br/>
+3.0-beta1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CrashScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$<init>(kotlin.String, java.lang.Exception)/errorMessage">errorMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a>&nbsp;<span class="symbol">=</span>&nbsp;""<span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$<init>(kotlin.String, java.lang.Exception)/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">CrashScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$<init>(java.lang.Exception)/exception">exception</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a><span class="symbol">)</span></code><code><span class="identifier">CrashScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$<init>(kotlin.String, kotlin.String)/errorMessage">errorMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a>&nbsp;<span class="symbol">=</span>&nbsp;""<span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$<init>(kotlin.String, kotlin.String)/stackTrace">stackTrace</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a>&nbsp;<span class="symbol">=</span>&nbsp;""<span class="symbol">)</span></code>
+<p>A screen shown when an uncaught exception is thrown. Completely independent from main engine code.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="camera.html">camera</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">camera</span><span class="symbol">: </span><span class="identifier">OrthographicCamera</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="error-message.html">errorMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">errorMessage</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="font.html">font</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">font</span><span class="symbol">: </span><span class="identifier">BitmapFont</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="layout.html">layout</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">layout</span><span class="symbol">: </span><span class="identifier">GlyphLayout</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="sprite-batch.html">spriteBatch</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">spriteBatch</span><span class="symbol">: </span><span class="identifier">SpriteBatch</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stack-trace.html">stackTrace</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">stackTrace</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="viewport.html">viewport</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">viewport</span><span class="symbol">: </span><span class="identifier">StretchViewport</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="draw-centered-text.html">drawCenteredText</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">drawCenteredText</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawCenteredText(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawCenteredText(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float)/color">color</span><span class="symbol">:</span>&nbsp;<span class="identifier">Color</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawCenteredText(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawCenteredText(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawCenteredText(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float)/scale">scale</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="draw-wrapped-center.html">drawWrappedCenter</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">drawWrappedCenter</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/color">color</span><span class="symbol">:</span>&nbsp;<span class="identifier">Color</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/scale">scale</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$drawWrappedCenter(kotlin.String, com.badlogic.gdx.graphics.Color, kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="render.html">render</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">render</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$render(kotlin.Float)/delta">delta</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resize.html">resize</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">resize</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$resize(kotlin.Int, kotlin.Int)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.screens.CrashScreen$resize(kotlin.Int, kotlin.Int)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="show.html">show</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">show</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

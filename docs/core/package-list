@@ -1,0 +1,21 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:io.glorantq.simularscript.utils$ceilToNearest(kotlin.Number, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-number/ceil-to-nearest.html
+$dokka.location:io.glorantq.simularscript.utils$floorToNearest(kotlin.Number, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-number/floor-to-nearest.html
+$dokka.location:io.glorantq.simularscript.utils$g(org.json.simple.JSONObject, kotlin.String)io.glorantq.simularscript.utils/org.json.simple.-j-s-o-n-object/g.html
+$dokka.location:io.glorantq.simularscript.utils$hasKeys(org.json.simple.JSONObject, kotlin.Array((kotlin.String)))io.glorantq.simularscript.utils/org.json.simple.-j-s-o-n-object/has-keys.html
+$dokka.location:io.glorantq.simularscript.utils$hexToOGL(kotlin.Int)io.glorantq.simularscript.utils/kotlin.-int/hex-to-o-g-l.html
+$dokka.location:io.glorantq.simularscript.utils$hexToRGB(kotlin.Int)io.glorantq.simularscript.utils/kotlin.-int/hex-to-r-g-b.html
+$dokka.location:io.glorantq.simularscript.utils$rgbToOGL(kotlin.Int)io.glorantq.simularscript.utils/kotlin.-int/rgb-to-o-g-l.html
+$dokka.location:io.glorantq.simularscript.utils$roundToNearest(kotlin.Number, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-number/round-to-nearest.html
+$dokka.location:io.glorantq.simularscript.utils$split(kotlin.String, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-string/split.html
+io.glorantq.simularscript
+io.glorantq.simularscript.config
+io.glorantq.simularscript.engine
+io.glorantq.simularscript.engine.api
+io.glorantq.simularscript.engine.api.graphics
+io.glorantq.simularscript.engine.api.multifile
+io.glorantq.simularscript.engine.scripting
+io.glorantq.simularscript.input
+io.glorantq.simularscript.screens
+io.glorantq.simularscript.utils

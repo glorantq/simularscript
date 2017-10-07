@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GestureHandler - core</title>
+<link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">io.glorantq.simularscript.input</a>&nbsp;/&nbsp;<a href=".">GestureHandler</a><br/>
+<br/>
+<h1>GestureHandler</h1>
+<code><span class="keyword">class </span><span class="identifier">GestureHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GestureListener</span></code>
+<p>Class listening and forwarding gesture events</p>
+<p><strong>Author</strong><br/>
+Gerber Lóránt Viktor</p>
+<p><strong>Since</strong><br/>
+3.0-beta1</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-singleton/index.html">Singleton</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">Singleton</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GestureHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Class listening and forwarding gesture events</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="fling.html">fling</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">fling</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$fling(kotlin.Float, kotlin.Float, kotlin.Int)/velocityX">velocityX</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$fling(kotlin.Float, kotlin.Float, kotlin.Int)/velocityY">velocityY</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$fling(kotlin.Float, kotlin.Float, kotlin.Int)/button">button</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="long-press.html">longPress</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">longPress</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$longPress(kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$longPress(kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pan.html">pan</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">pan</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pan(kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pan(kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pan(kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/deltaX">deltaX</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pan(kotlin.Float, kotlin.Float, kotlin.Float, kotlin.Float)/deltaY">deltaY</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pan-stop.html">panStop</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">panStop</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$panStop(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$panStop(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$panStop(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/pointer">pointer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$panStop(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/button">button</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pinch.html">pinch</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">pinch</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pinch(com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2)/initialPointer1">initialPointer1</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vector2</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pinch(com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2)/initialPointer2">initialPointer2</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vector2</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pinch(com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2)/pointer1">pointer1</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vector2</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$pinch(com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2, com.badlogic.gdx.math.Vector2)/pointer2">pointer2</span><span class="symbol">:</span>&nbsp;<span class="identifier">Vector2</span><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pinch-stop.html">pinchStop</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">pinchStop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="tap.html">tap</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">tap</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$tap(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$tap(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$tap(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/count">count</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$tap(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/button">button</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="touch-down.html">touchDown</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">touchDown</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$touchDown(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$touchDown(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$touchDown(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/pointer">pointer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$touchDown(kotlin.Float, kotlin.Float, kotlin.Int, kotlin.Int)/button">button</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unproject.html">unproject</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">unproject</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$unproject(kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$unproject(kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Vector2</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="zoom.html">zoom</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">zoom</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$zoom(kotlin.Float, kotlin.Float)/initialDistance">initialDistance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler$zoom(kotlin.Float, kotlin.Float)/distance">distance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-i-n-s-t-a-n-c-e.html">INSTANCE</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">INSTANCE</span><span class="symbol">: </span><span class="identifier">GestureHandler</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="listeners.html">listeners</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">listeners</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../-input-listener/index.html"><span class="identifier">InputListener</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-add.html">toAdd</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">toAdd</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../-input-listener/index.html"><span class="identifier">InputListener</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-remove.html">toRemove</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">toRemove</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-array-list/index.html"><span class="identifier">ArrayList</span></a><span class="symbol">&lt;</span><a href="../-input-listener/index.html"><span class="identifier">InputListener</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="register.html">register</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">register</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler.Companion$register(io.glorantq.simularscript.input.InputListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../-input-listener/index.html"><span class="identifier">InputListener</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remove.html">remove</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.input.GestureHandler.Companion$remove(io.glorantq.simularscript.input.InputListener)/listener">listener</span><span class="symbol">:</span>&nbsp;<a href="../-input-listener/index.html"><span class="identifier">InputListener</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="update.html">update</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">update</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

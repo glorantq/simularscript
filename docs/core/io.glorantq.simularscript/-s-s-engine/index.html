@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SSEngine - core</title>
+<link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">io.glorantq.simularscript</a>&nbsp;/&nbsp;<a href=".">SSEngine</a><br/>
+<br/>
+<h1>SSEngine</h1>
+<code><span class="keyword">class </span><span class="identifier">SSEngine</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">KtxGame</span><span class="symbol">&lt;</span><span class="identifier">Screen</span><span class="symbol">&gt;</span></code>
+<p>Main engine class</p>
+<p><strong>Author</strong><br/>
+Gerber Lóránt Viktor</p>
+<p><strong>Since</strong><br/>
+3.0-beta1</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-singleton/index.html">Singleton</a></p>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">Singleton</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SSEngine</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Main engine class</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="base-colour.html">baseColour</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">baseColour</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html"><span class="identifier">FloatArray</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="camera.html">camera</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">camera</span><span class="symbol">: </span><span class="identifier">OrthographicCamera</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="engine-config.html">engineConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">engineConfig</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript.config/-j-s-o-n-config/index.html"><span class="identifier">JSONConfig</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="game-meta.html">gameMeta</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">gameMeta</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript.engine/-game-meta/index.html"><span class="identifier">GameMeta</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="game-screen.html">gameScreen</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">gameScreen</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript.screens/-game-screen/index.html"><span class="identifier">GameScreen</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="logger.html">logger</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">logger</span><span class="symbol">: </span><span class="identifier">Logger</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="sprite-batch.html">spriteBatch</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">spriteBatch</span><span class="symbol">: </span><span class="identifier">SpriteBatch</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="viewport.html">viewport</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">viewport</span><span class="symbol">: </span><span class="identifier">Viewport</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="window.html">window</a></p>
+</td>
+<td>
+<code><span class="keyword">lateinit</span> <span class="keyword">var </span><span class="identifier">window</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript.engine/-window/index.html"><span class="identifier">Window</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="crash.html">crash</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">crash</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.SSEngine$crash(java.lang.Exception)/e">e</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-exception/index.html"><span class="identifier">Exception</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create.html">create</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">create</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="render.html">render</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">render</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resize.html">resize</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">resize</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.SSEngine$resize(kotlin.Int, kotlin.Int)/width">width</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.SSEngine$resize(kotlin.Int, kotlin.Int)/height">height</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-screen.html">setScreen</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.SSEngine$setScreen(com.badlogic.gdx.Screen)/screen">screen</span><span class="symbol">:</span>&nbsp;<span class="identifier">Screen</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">Type</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Screen</span><span class="symbol">&gt;</span> <span class="identifier">setScreen</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.SSEngine$setScreen(java.lang.Class((io.glorantq.simularscript.SSEngine.setScreen.Type)))/type">type</span><span class="symbol">:</span>&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html"><span class="identifier">Class</span></a><span class="symbol">&lt;</span><span class="identifier">Type</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-h-e-i-g-h-t.html">HEIGHT</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">HEIGHT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-n-s-t-a-n-c-e.html">INSTANCE</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">INSTANCE</span><span class="symbol">: </span><span class="identifier">SSEngine</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-e-r-s-i-o-n.html">VERSION</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">VERSION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-w-i-d-t-h.html">WIDTH</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">WIDTH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,242 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LuaSprite - core</title>
+<link rel="stylesheet" href="..\..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">core</a>&nbsp;/&nbsp;<a href="../index.html">io.glorantq.simularscript.engine.api.graphics</a>&nbsp;/&nbsp;<a href=".">LuaSprite</a><br/>
+<br/>
+<h1>LuaSprite</h1>
+<code><span class="keyword">class </span><span class="identifier">LuaSprite</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LuaTable</span><span class="symbol">, </span><a href="../../io.glorantq.simularscript.input/-input-listener/index.html"><span class="identifier">InputListener</span></a></code>
+<p>Sprite wrapper for Lua scripts</p>
+<h3>Parameters</h3>
+<p><a name="path"></a>
+<code>path</code> - Path to the image in the assets folder</p>
+<p><strong>Author</strong><br/>
+Gerber Lóránt Viktor</p>
+<p><strong>Since</strong><br/>
+3.0-beta1</p>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-dispose/index.html">Dispose</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Dispose</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-draw/index.html">Draw</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Draw</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-height/index.html">GetHeight</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetHeight</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-position/index.html">GetPosition</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetPosition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-size/index.html">GetSize</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetSize</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-width/index.html">GetWidth</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetWidth</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-x/index.html">GetX</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetX</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-y/index.html">GetY</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetY</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-is-visible/index.html">IsVisible</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IsVisible</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ZeroArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-height/index.html">SetHeight</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetHeight</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-position/index.html">SetPosition</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetPosition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-size/index.html">SetSize</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetSize</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-visibility/index.html">SetVisibility</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetVisibility</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-width/index.html">SetWidth</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetWidth</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-x/index.html">SetX</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetX</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-y/index.html">SetY</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SetY</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LuaSprite</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$<init>(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Sprite wrapper for Lua scripts</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="backing-sprite.html">backingSprite</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">backingSprite</span><span class="symbol">: </span><span class="identifier">Sprite</span></code>
+<p>The original LibGDX sprite</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="disposed.html">disposed</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">disposed</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="long-click-function.html">longClickFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">longClickFunction</span><span class="symbol">: </span><span class="identifier">LuaValue</span></code>
+<p>Function to be executed when this sprite is long-pressed</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-click-function.html">onClickFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">onClickFunction</span><span class="symbol">: </span><span class="identifier">LuaValue</span></code>
+<p>Function to be executed when this sprite is clicked</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="visible.html">visible</a></p>
+</td>
+<td>
+<code><span class="keyword">var </span><span class="identifier">visible</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="long-press.html">longPress</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">longPress</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$longPress(kotlin.Float, kotlin.Float)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$longPress(kotlin.Float, kotlin.Float)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Executed when the user long-presses the screen</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set.html">set</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">set</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$set(org.luaj.vm2.LuaValue, org.luaj.vm2.LuaValue)/key">key</span><span class="symbol">:</span>&nbsp;<span class="identifier">LuaValue</span><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$set(org.luaj.vm2.LuaValue, org.luaj.vm2.LuaValue)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">LuaValue</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Override of the original {@code LuaTable#set(LuaValue, LuaValue)} method</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="tap.html">tap</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">tap</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$tap(kotlin.Float, kotlin.Float, kotlin.Int)/x">x</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$tap(kotlin.Float, kotlin.Float, kotlin.Int)/y">y</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">, </span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$tap(kotlin.Float, kotlin.Float, kotlin.Int)/button">button</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Executed when the user presses the screen</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Companion Object Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="engine.html">engine</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">engine</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript/-s-s-engine/index.html"><span class="identifier">SSEngine</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
