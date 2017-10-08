@@ -100,7 +100,6 @@ project(":core") {
         compile "io.github.libktx:ktx-inject:$ktxVersion"
 
         compile "org.luaj:luaj-jse:$luajVersion"
-        compile "org.luaj:luaj-jme:$luajVersion"
 
         compile("com.googlecode.json-simple:json-simple:1.1.1") {
             exclude module: 'junit'
