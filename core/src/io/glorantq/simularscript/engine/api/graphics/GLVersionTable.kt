@@ -5,7 +5,12 @@ import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * LuaTable containing the OpenGL version used by the enigne
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param version Version object from LibGDX
  */
 class GLVersionTable(private val version: GLVersion) : LuaTable() {
     init {

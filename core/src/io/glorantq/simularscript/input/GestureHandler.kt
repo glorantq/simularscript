@@ -7,7 +7,10 @@ import io.glorantq.simularscript.utils.ssLogger
 import ktx.log.Logger
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * Class listening and forwarding gesture events
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class GestureHandler private constructor(): GestureDetector.GestureListener {
     private object Singleton {

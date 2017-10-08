@@ -9,7 +9,10 @@ import org.luaj.vm2.lib.TwoArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * Lua API wrapper for graphics functions
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class GraphicsApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {

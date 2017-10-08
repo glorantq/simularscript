@@ -12,7 +12,10 @@ import org.luaj.vm2.lib.TwoArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 03..
+ * Lua API for intercting with the game's camera
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class CameraApi : TwoArgFunction() {
     companion object {

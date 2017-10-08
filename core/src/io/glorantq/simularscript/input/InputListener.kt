@@ -1,7 +1,10 @@
 package io.glorantq.simularscript.input
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * Interface to listen to gesture events
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 interface InputListener {
     fun tap(x: Float, y: Float, button: Int): Boolean = false

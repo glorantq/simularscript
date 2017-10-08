@@ -7,12 +7,20 @@ import org.json.simple.JSONObject
 import org.json.simple.parser.JSONParser
 
 /**
- * Created by Gerber Lóránt on 2017. 09. 30..
+ * Utility class to parse and read JSON configurations
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param handle The FileHandle to the config file
  */
 
 class JSONConfig(handle: FileHandle) {
     constructor(name: String): this(Gdx.files.internal(name))
 
+    /**
+     * Map containing keys mapped to generic Objects
+     */
     private val contents: MutableMap<String, Any> = mutableMapOf()
 
     init {

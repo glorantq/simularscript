@@ -9,8 +9,12 @@ import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.TwoArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 01..
+ * API for using multiple files in one game
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
+
 class MultifileApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {
         val library: LuaTable = LuaValue.tableOf()

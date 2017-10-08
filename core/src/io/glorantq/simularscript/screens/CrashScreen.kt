@@ -14,7 +14,10 @@ import ktx.app.clearScreen
 import org.apache.commons.lang3.exception.ExceptionUtils
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 01..
+ * A screen shown when an uncaught exception is thrown. Completely independent from main engine code.
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class CrashScreen(private val errorMessage: String = "", private val stackTrace: String = "") : KtxScreen {
     constructor(errorMessage: String = "", exception: Exception): this(errorMessage, ExceptionUtils.getStackTrace(exception))

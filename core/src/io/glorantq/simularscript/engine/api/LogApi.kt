@@ -1,6 +1,6 @@
 package io.glorantq.simularscript.engine.api
 
-import io.glorantq.simularscript.utils.SSLogger
+import io.glorantq.simularscript.utils.ssLogger
 import ktx.log.Logger
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
@@ -8,11 +8,14 @@ import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.TwoArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 01..
+ * Logging API
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class LogApi : TwoArgFunction() {
     companion object {
-        private val logger: Logger = SSLogger("ScriptedGame")
+        private val logger: Logger = ssLogger<LogApi>()
     }
 
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {

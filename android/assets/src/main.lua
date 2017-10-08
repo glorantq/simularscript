@@ -11,11 +11,11 @@ local winScreen
 local speed = 500
 
 function ss_main()
-    sprites[-1] = 200
+    sprites[-1] = 10
 
     for i = 1, sprites[-1] do
-        local sprite = Graphics.makeSprite("badlogic.jpg")
-        sprite.setSize(Math.vec2(64, 64))
+        local sprite = Graphics.makeSprite(Math.choose("badlogic.jpg", "c2e.jpg"))
+        sprite.setSize(Math.vec2(256, 256))
         sprite.setPosition(Math.vec2(Math.random(Graphics.getWidth() - 64), Math.random(Graphics.getHeight() - 64)))
         sprite.clickHandler = function()
             sprite.dispose()
@@ -44,7 +44,7 @@ function ss_render()
             local sprite = sprites[i]
             sprite.draw()
 
-            local position = sprites[i].getPosition()
+            local position = sprite.getPosition()
             local change = Math.vec2(speed * Graphics.getDeltaTime() * sprite.xDirection, speed * Graphics.getDeltaTime() * sprite.yDirection)
             position = position.add(change)
             sprite.setPosition(position)
@@ -57,8 +57,8 @@ function ss_render()
                 sprite.xDirection = 1
             end
 
-            if position.y > Graphics.getHeight() - sprites[i].getHeight() then
-                sprite.yDirection = sprite.yDirection * -1
+            if position.y > Graphics.getHeight() - sprite.getHeight() then
+                sprite.yDirection =  -1
             end
 
             if position.y < 0 then
@@ -66,8 +66,6 @@ function ss_render()
             end
         end
     end
-
-    Log.info("FPS: " .. Graphics.getFPS())
 end
 
 function check_win()

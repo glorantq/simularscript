@@ -4,8 +4,16 @@ import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 01..
+ * LuaTable linking to another script context.
+ * Redirects ``LuaTable#get()`` and ``LuaTable#set()`` methods to the other context
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param context Context of the other script
+ * @param filename Name of the other context (file)
  */
+
 class LuaLinkerTable(private val context: LuaValue, private val filename: String) : LuaTable() {
     override fun get(key: String): LuaValue = context[key]
     override fun get(key: LuaValue?): LuaValue = context.get(key)

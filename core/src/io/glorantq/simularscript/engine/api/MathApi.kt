@@ -12,8 +12,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * Math API for Lua scripts
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
+
 class MathApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {
         val library: LuaTable = LuaValue.tableOf()
@@ -40,11 +44,18 @@ class MathApi : TwoArgFunction() {
         library.set("sin", Sin())
         library.set("sqrt", Sqrt())
         library.set("tan", Tan())
-        library.set("choose", Choose(r.random))
+        library.set("choose", Choose(r))
         env.set("Math", library)
         return library
     }
 
+    /**
+     * Class used to make vectors
+     *
+     * @author Gerber Lóránt Viktor
+     * @since 3.0-beta1
+     * @see io.glorantq.simularscript.engine.api.LuaVector2
+     */
     private class Vec2 : TwoArgFunction() {
         override fun call(arg1: LuaValue, arg2: LuaValue): LuaValue = LuaVector2(arg1.checkdouble(), arg2.checkdouble())
     }
@@ -190,19 +201,17 @@ class MathApi : TwoArgFunction() {
         }
     }
 
-    private class Choose(private val random: Random) : VarArgFunction() {
+    private class Choose(private val random: LuaRandom) : VarArgFunction() {
         override fun invoke(args: Varargs): Varargs {
             if(args.narg() < 1) {
                 argerror("actual arguments")
                 return LuaValue.varargsOf(arrayOf(LuaValue.NONE))
             }
 
-            val kotlinArgs: ArrayList<Double> = arrayListOf()
-            (1..args.narg()).mapTo(kotlinArgs) { args.checkdouble(it) }
+            val kotlinArgs: ArrayList<LuaValue> = arrayListOf()
+            (1..args.narg()).mapTo(kotlinArgs) { args.arg(it) }
 
-            println(kotlinArgs.size)
-
-            return LuaValue.varargsOf(arrayOf(LuaValue.valueOf(kotlinArgs[random.nextInt(kotlinArgs.size)])))
+            return LuaValue.varargsOf(arrayOf(kotlinArgs[random.random.nextInt(kotlinArgs.size)]))
         }
     }
 }

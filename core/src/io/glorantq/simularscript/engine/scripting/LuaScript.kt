@@ -1,7 +1,5 @@
 package io.glorantq.simularscript.engine.scripting
 
-import com.badlogic.gdx.Application
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Version
 import com.badlogic.gdx.files.FileHandle
 import io.glorantq.simularscript.SSEngine
@@ -10,19 +8,27 @@ import org.luaj.vm2.LuaClosure
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.Prototype
 import org.luaj.vm2.compiler.LuaC
-import org.luaj.vm2.lib.jme.JmePlatform
 import org.luaj.vm2.lib.jse.JsePlatform
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 01..
+ * Object representing a script
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param script FileHandle to the script file
+ * @param includes List of modules that should be imported automatically
  */
 class LuaScript(val script: FileHandle, vararg includes: String) {
-    val context: LuaValue = if(Gdx.app.type == Application.ApplicationType.Android) {
-        JmePlatform.standardGlobals()
-    } else {
-        JsePlatform.standardGlobals()
-    }
 
+    /**
+     * Context of this script
+     */
+    val context: LuaValue = JsePlatform.standardGlobals()
+
+    /**
+     * Compiled code for this script
+     */
     val luaCode: Prototype
 
     init {
@@ -43,4 +49,6 @@ class LuaScript(val script: FileHandle, vararg includes: String) {
         luaCode = LuaC.instance.compile(script.readString("UTF-8").byteInputStream(), "script-${script.nameWithoutExtension()}")
         LuaClosure(luaCode, context).call()
     }
+
+    override fun toString(): String = "LuaScript(context=${context.tojstring()}, script=${script.nameWithoutExtension()})"
 }

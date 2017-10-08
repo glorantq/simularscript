@@ -5,7 +5,10 @@ import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.TwoArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 05..
+ * API for querying input devices
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
 class InputApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {

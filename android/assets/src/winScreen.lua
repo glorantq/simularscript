@@ -9,7 +9,7 @@ initialised = false
 local winSprite
 
 function main()
-    winSprite = Graphics.makeSprite("badlogic.jpg")
+    winSprite = Graphics.makeSprite("c2e.jpg")
     winSprite.setSize(Math.vec2(Graphics.getWidth(), Graphics.getHeight()))
 
     initialised = true

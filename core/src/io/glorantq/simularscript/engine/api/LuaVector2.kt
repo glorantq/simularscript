@@ -7,11 +7,20 @@ import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.OneArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * 2D Vector wrapper for Lua scripts
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param x The x component of this vector
+ * @param y The y component of this vector
  */
 class LuaVector2(val x: Double, val y: Double) : LuaTable() {
     constructor(vector: Vector2): this(vector.x.toDouble(), vector.y.toDouble())
 
+    /**
+     * THe original LibGDX Vector
+     */
     private var backingVector: Vector2 = Vector2(x.toFloat(), y.toFloat())
 
     init {

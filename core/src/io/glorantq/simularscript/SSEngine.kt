@@ -20,6 +20,12 @@ import ktx.log.Logger
 import org.json.simple.JSONArray
 import org.json.simple.JSONObject
 
+/**
+ * Main engine class
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ */
 class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firstScreen = emptyScreen()) {
     private object Singleton {
         val INSTANCE: SSEngine = SSEngine()
@@ -102,15 +108,12 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
             logger.info { "Window Configuration: $window" }
 
             val gameConfig: JSONObject = engineConfig.g("game")
-            if (!gameConfig.hasKeys("baseColour", "useVsync", "scripting")) {
+            if (!gameConfig.hasKeys("useVsync", "scripting")) {
                 throw EngineInitialisationException("Invalid game configuration!")
             }
 
             Gdx.graphics.setVSync(gameConfig.g("useVsync"))
-            logger.info { "before" }
-            // TODO: Fix this fucking bullshit
-            baseColour = /*(gameConfig["baseColour"] as Number).toInt().hexToOGL()*/ floatArrayOf(0f, 0f, 0f)
-            logger.info { "after" }
+            baseColour = floatArrayOf(0f, 0f, 0f)
 
             val metaConfig: JSONObject = engineConfig.g("meta")
             gameMeta = GameMeta(metaConfig.g("name"), metaConfig.g("packageName"), metaConfig.g("author"))

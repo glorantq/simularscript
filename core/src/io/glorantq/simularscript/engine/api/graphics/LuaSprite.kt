@@ -17,7 +17,12 @@ import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * Sprite wrapper for Lua scripts
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
+ *
+ * @param path Path to the image in the assets folder
  */
 
 class LuaSprite(path: String) : LuaTable(), InputListener {
@@ -25,12 +30,23 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         private val engine: SSEngine = SSEngine.INSTANCE
     }
 
+    /**
+     * The original LibGDX sprite
+     */
     private val backingSprite: Sprite
+
+    /**
+     * Function to be executed when this sprite is clicked
+     */
     private var onClickFunction: LuaValue = LuaValue.NONE
+
+    /**
+     * Function to be executed when this sprite is long-pressed
+     */
     private var longClickFunction: LuaValue = LuaValue.NONE
 
     var visible: Boolean = true
-        get() = if(disposed) false else field
+        get() = if (disposed) false else field
     var disposed: Boolean = false
         private set
 
@@ -64,6 +80,11 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         GestureHandler.register(this)
     }
 
+    /**
+     * Executed when the user presses the screen
+     *
+     * @see InputListener
+     */
     override fun tap(x: Float, y: Float, button: Int): Boolean {
         if (onClickFunction !is LuaFunction) return false
         if (backingSprite.boundingRectangle.contains(x, y)) {
@@ -74,8 +95,13 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         return false
     }
 
+    /**
+     * Executed when the user long-presses the screen
+     *
+     * @see InputListener
+     */
     override fun longPress(x: Float, y: Float): Boolean {
-        if(longClickFunction !is LuaFunction) return false
+        if (longClickFunction !is LuaFunction) return false
         if (backingSprite.boundingRectangle.contains(x, y)) {
             longClickFunction.call(this)
             return true
@@ -84,6 +110,9 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         return false
     }
 
+    /**
+     * Override of the original {@code LuaTable#set(LuaValue, LuaValue)} method
+     */
     override fun set(key: LuaValue, value: LuaValue) {
         when (key.tojstring()) {
             "clickHandler" -> onClickFunction = value
@@ -94,7 +123,7 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
 
     private class Draw(private val sprite: LuaSprite) : ZeroArgFunction() {
         override fun call(): LuaValue {
-            if(sprite.visible) {
+            if (sprite.visible) {
                 sprite.backingSprite.draw(engine.spriteBatch)
             }
             return LuaValue.NONE
@@ -188,7 +217,7 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         }
     }
 
-    private class SetVisibility(private val sprite: LuaSprite): OneArgFunction() {
+    private class SetVisibility(private val sprite: LuaSprite) : OneArgFunction() {
         override fun call(arg: LuaValue): LuaValue {
             sprite.visible = arg.checkboolean()
 
@@ -196,7 +225,7 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         }
     }
 
-    private class IsVisible(private val sprite: LuaSprite): ZeroArgFunction() {
+    private class IsVisible(private val sprite: LuaSprite) : ZeroArgFunction() {
         override fun call(): LuaValue = LuaValue.valueOf(sprite.visible)
     }
 }

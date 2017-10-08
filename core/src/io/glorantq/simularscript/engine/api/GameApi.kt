@@ -9,8 +9,12 @@ import org.luaj.vm2.lib.TwoArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
 
 /**
- * Created by Gerber Lóránt on 2017. 10. 02..
+ * API for interacting with engine-related methods
+ *
+ * @author Gerber Lóránt Viktor
+ * @since 3.0-beta1
  */
+
 class GameApi : TwoArgFunction() {
     override fun call(modname: LuaValue, env: LuaValue): LuaValue {
         val library: LuaTable = LuaValue.tableOf()
