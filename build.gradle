@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.15"
     }
 }
 
@@ -101,7 +102,9 @@ project(":core") {
         compile "org.luaj:luaj-jse:$luajVersion"
         compile "org.luaj:luaj-jme:$luajVersion"
 
-        compile "com.googlecode.json-simple:json-simple:1.1.1"
+        compile("com.googlecode.json-simple:json-simple:1.1.1") {
+            exclude module: 'junit'
+        }
 
         compile "org.apache.commons:commons-lang3:3.6"
     }
