@@ -21,22 +21,17 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
         val INSTANCE: GestureHandler by lazy { Singleton.INSTANCE }
 
         private val listeners: ArrayList<InputListener> = ArrayList()
-        private val toRemove: ArrayList<InputListener> = ArrayList()
-        private val toAdd: ArrayList<InputListener> = ArrayList()
 
         fun register(listener: InputListener) {
-            toAdd.add(listener)
+            synchronized(listeners) {
+                listeners.add(listener)
+            }
         }
 
         fun remove(listener: InputListener) {
-            toRemove.add(listener)
-        }
-
-        fun update() {
-            listeners.removeAll(toRemove)
-            toRemove.clear()
-            listeners.addAll(toAdd)
-            toAdd.clear()
+            synchronized(listeners) {
+                listeners.remove(listener)
+            }
         }
     }
 
@@ -44,9 +39,11 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
         try {
             val realPos: Vector2 = unproject(x, y)
 
-            for (listener in listeners) {
-                if(listener.tap(realPos.x, realPos.y, button)) {
-                    break
+            synchronized(listeners) {
+                for (listener in listeners) {
+                    if (listener.tap(realPos.x, realPos.y, button)) {
+                        break
+                    }
                 }
             }
         } catch (e: Exception) {
@@ -61,9 +58,11 @@ class GestureHandler private constructor(): GestureDetector.GestureListener {
         try {
             val realPos: Vector2 = unproject(x, y)
 
-            for (listener in listeners) {
-                if(listener.longPress(realPos.x, realPos.y)) {
-                    break
+            synchronized(listeners) {
+                for (listener in listeners) {
+                    if (listener.longPress(realPos.x, realPos.y)) {
+                        break
+                    }
                 }
             }
         } catch (e: Exception) {

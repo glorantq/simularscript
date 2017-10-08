@@ -157,8 +157,6 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
             super.render()
 
             spriteBatch.end()
-
-            GestureHandler.update()
         } catch (e: Exception) {
             crash(e)
         }

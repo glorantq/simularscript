@@ -27,6 +27,14 @@ function ss_main()
     end
 
     winScreen = __ "winScreen"
+
+    Log.info(Math.avg(1))
+    Log.info(Math.avg(1, 0))
+    Log.info(Math.avg(1, 2, 3))
+    Log.info(Math.avg(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+    Log.info(Math.avg(1423, 423, 76555, 123))
+
+    Log.info(Math.sum(1, 2, 3, 4))
 end
 
 function ss_render()

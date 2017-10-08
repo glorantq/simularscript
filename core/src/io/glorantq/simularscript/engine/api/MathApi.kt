@@ -45,8 +45,48 @@ class MathApi : TwoArgFunction() {
         library.set("sqrt", Sqrt())
         library.set("tan", Tan())
         library.set("choose", Choose(r))
+        library.set("avg", Avg())
+        library.set("sum", Sum())
         env.set("Math", library)
         return library
+    }
+
+    /**
+     * Class to calculate the sum of a sequence
+     *
+     * @author Gerber Lóránt Viktor
+     * @since 3.0-beta2
+     */
+    private class Sum : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            if(args.narg() < 1) {
+                argerror("numbers")
+                return LuaValue.NONE
+            }
+
+            val kotlinArgs: ArrayList<Double> = arrayListOf()
+            (1..args.narg()).mapTo(kotlinArgs) { args.checkdouble(it) }
+            return LuaValue.valueOf(kotlinArgs.asSequence().sum())
+        }
+    }
+
+    /**
+     * Class to calculate the average of a sequence
+     *
+     * @author Gerber Lóránt Viktor
+     * @since 3.0-beta2
+     */
+    private class Avg : VarArgFunction() {
+        override fun invoke(args: Varargs): Varargs {
+            if(args.narg() < 1) {
+                argerror("numbers")
+                return LuaValue.NONE
+            }
+
+            val kotlinArgs: ArrayList<Double> = arrayListOf()
+            (1..args.narg()).mapTo(kotlinArgs) { args.checkdouble(it) }
+            return LuaValue.valueOf(kotlinArgs.asSequence().average())
+        }
     }
 
     /**
@@ -54,7 +94,7 @@ class MathApi : TwoArgFunction() {
      *
      * @author Gerber Lóránt Viktor
      * @since 3.0-beta1
-     * @see io.glorantq.simularscript.engine.api.LuaVector2
+     * @see LuaVector2
      */
     private class Vec2 : TwoArgFunction() {
         override fun call(arg1: LuaValue, arg2: LuaValue): LuaValue = LuaVector2(arg1.checkdouble(), arg2.checkdouble())

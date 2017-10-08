@@ -106,6 +106,8 @@ project(":core") {
         }
 
         compile "org.apache.commons:commons-lang3:3.6"
+
+        compile 'org.nield:kotlinstatistics:0.3.0'
     }
 }
 
