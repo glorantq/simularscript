@@ -33,7 +33,7 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
 
     companion object {
         val INSTANCE: SSEngine by lazy { Singleton.INSTANCE }
-        val VERSION: String = "3.0-beta1"
+        val VERSION: String = "3.0-beta2"
 
         val WIDTH: Float
             get() = INSTANCE.window.width.toFloat()
@@ -182,6 +182,10 @@ class SSEngine private constructor() : KtxGame<Screen>(clearScreen = false, firs
     fun crash(e: Exception) {
         setScreen(CrashScreen(e))
         e.printStackTrace()
+    }
+
+    fun setBaseColour(r: Float, g: Float, b: Float) {
+        baseColour = floatArrayOf(r, g, b)
     }
 
     override fun <Type : Screen> setScreen(type: Class<Type>) {
