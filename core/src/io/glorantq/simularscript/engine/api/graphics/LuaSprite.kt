@@ -1,6 +1,5 @@
 package io.glorantq.simularscript.engine.api.graphics
 
-import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
@@ -13,6 +12,7 @@ import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaFunction
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
+import org.luaj.vm2.lib.LibFunction
 import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
 
@@ -25,7 +25,7 @@ import org.luaj.vm2.lib.ZeroArgFunction
  * @param path Path to the image in the assets folder
  */
 
-class LuaSprite(path: String) : LuaTable(), InputListener {
+class LuaSprite(handle: FileHandle) : LuaTable(), InputListener {
     companion object {
         private val engine: SSEngine = SSEngine.INSTANCE
     }
@@ -33,7 +33,7 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
     /**
      * The original LibGDX sprite
      */
-    private val backingSprite: Sprite
+    private val backingSprite: Sprite = Sprite(Texture(handle))
 
     /**
      * Function to be executed when this sprite is clicked
@@ -51,8 +51,6 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         private set
 
     init {
-        val handle: FileHandle = Gdx.files.internal(path)
-        backingSprite = Sprite(Texture(handle))
 
         set("draw", Draw(this))
 
@@ -144,13 +142,19 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         }
     }
 
-    private class SetPosition(private val sprite: LuaSprite) : OneArgFunction() {
+    private class SetPosition(private val sprite: LuaSprite) : LibFunction() {
         override fun call(arg: LuaValue): LuaValue {
             if (arg !is LuaVector2) {
                 throw LuaError("Expected LuaVector2")
             }
 
             sprite.backingSprite.setPosition(arg.x.toFloat(), arg.y.toFloat())
+
+            return LuaValue.NONE
+        }
+
+        override fun call(a: LuaValue, b: LuaValue): LuaValue {
+            sprite.backingSprite.setPosition(a.checkdouble().toFloat(), b.checkdouble().toFloat())
 
             return LuaValue.NONE
         }
@@ -184,13 +188,19 @@ class LuaSprite(path: String) : LuaTable(), InputListener {
         }
     }
 
-    private class SetSize(private val sprite: LuaSprite) : OneArgFunction() {
+    private class SetSize(private val sprite: LuaSprite) : LibFunction() {
         override fun call(arg: LuaValue): LuaValue {
             if (arg !is LuaVector2) {
                 throw LuaError("Expected LuaVector2")
             }
 
             sprite.backingSprite.setSize(arg.x.toFloat(), arg.y.toFloat())
+
+            return LuaValue.NONE
+        }
+
+        override fun call(a: LuaValue, b: LuaValue): LuaValue {
+            sprite.backingSprite.setSize(a.checkdouble().toFloat(), b.checkdouble().toFloat())
 
             return LuaValue.NONE
         }

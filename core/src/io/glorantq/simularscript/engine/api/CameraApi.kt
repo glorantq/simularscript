@@ -7,6 +7,7 @@ import io.glorantq.simularscript.SSEngine
 import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
+import org.luaj.vm2.lib.LibFunction
 import org.luaj.vm2.lib.OneArgFunction
 import org.luaj.vm2.lib.TwoArgFunction
 import org.luaj.vm2.lib.ZeroArgFunction
@@ -52,7 +53,7 @@ class CameraApi : TwoArgFunction() {
         }
     }
 
-    private class SetPosition : OneArgFunction() {
+    private class SetPosition : LibFunction() {
         override fun call(arg: LuaValue): LuaValue {
             if (arg !is LuaVector2) {
                 throw LuaError("Expected LuaVector2")
@@ -60,6 +61,13 @@ class CameraApi : TwoArgFunction() {
 
             camera.position.x = arg.x.toFloat()
             camera.position.y = arg.y.toFloat()
+
+            return LuaValue.NONE
+        }
+
+        override fun call(a: LuaValue, b: LuaValue): LuaValue {
+            camera.position.x = a.checkdouble().toFloat()
+            camera.position.y = b.checkdouble().toFloat()
 
             return LuaValue.NONE
         }

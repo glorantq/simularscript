@@ -4,6 +4,7 @@ require "io.glorantq.simularscript.engine.api.graphics.GraphicsApi"
 require "io.glorantq.simularscript.engine.api.MathApi"
 require "io.glorantq.simularscript.engine.api.GameApi"
 require "io.glorantq.simularscript.engine.api.CameraApi"
+require "io.glorantq.simularscript.engine.api.io.FileApi"
 
 local sprites = {}
 local winScreen
@@ -14,9 +15,9 @@ function ss_main()
     sprites[-1] = 10
 
     for i = 1, sprites[-1] do
-        local sprite = Graphics.makeSprite(Math.choose("badlogic.jpg", "c2e.jpg"))
-        sprite.setSize(Math.vec2(256, 256))
-        sprite.setPosition(Math.vec2(Math.random(Graphics.getWidth() - 64), Math.random(Graphics.getHeight() - 64)))
+        local sprite = Graphics.makeSprite(FileIO.getInternal(Math.choose("badlogic.jpg", "jumpscare.jpg")))
+        sprite.setSize(256, 256)
+        sprite.setPosition(Math.random(Graphics.getWidth() - 64))
         sprite.clickHandler = function()
             sprite.dispose()
             sprites[i] = nil

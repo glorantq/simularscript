@@ -39,7 +39,8 @@ class GameScreen(private val sourceFolder: String, private val mainScript: Strin
             "io.glorantq.simularscript.engine.api.MathApi",
             "io.glorantq.simularscript.engine.api.GameApi",
             "io.glorantq.simularscript.engine.api.CameraApi",
-            "io.glorantq.simularscript.engine.api.InputApi"
+            "io.glorantq.simularscript.engine.api.InputApi",
+            "io.glorantq.simularscript.engine.api.io.FileApi"
     )
 
     /**

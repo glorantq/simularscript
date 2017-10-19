@@ -2,6 +2,7 @@ package io.glorantq.simularscript.utils
 
 import org.apache.commons.lang3.StringUtils
 import org.json.simple.JSONObject
+import org.luaj.vm2.LuaValue
 
 /**
  * Created by Gerber Lóránt on 2017. 10. 01..
@@ -34,3 +35,5 @@ fun Number.ceilToNearest(x: Int): Number = Math.ceil(toDouble() / x.toFloat()) *
 
 fun JSONObject.hasKeys(vararg keys: String): Boolean = !keys.any { !containsKey(it) }
 fun <E> JSONObject.g(key: String): E = get(key) as E
+
+fun LuaValue.toAny(): Any = if(isstring()) { checkjstring() } else if(isint()) { checkint() } else if(islong()) { checklong() } else if(isboolean()) { checkboolean() } else { this }

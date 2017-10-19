@@ -2,8 +2,10 @@ package io.glorantq.simularscript.engine.api.graphics
 
 import com.badlogic.gdx.Gdx
 import io.glorantq.simularscript.SSEngine
+import io.glorantq.simularscript.engine.api.io.LuaFile
 import io.glorantq.simularscript.utils.SSMath
 import io.glorantq.simularscript.utils.rgbToOGL
+import org.luaj.vm2.LuaError
 import org.luaj.vm2.LuaTable
 import org.luaj.vm2.LuaValue
 import org.luaj.vm2.lib.OneArgFunction
@@ -31,7 +33,6 @@ class GraphicsApi : TwoArgFunction() {
         library.set("setClearColour", ClearColour())
         env.set("Graphics", library)
         env.set("Gfx", library)
-
         return library
     }
 
@@ -56,7 +57,7 @@ class GraphicsApi : TwoArgFunction() {
     }
 
     private class MakeSprite : OneArgFunction() {
-        override fun call(arg: LuaValue): LuaValue = LuaSprite(arg.tojstring())
+        override fun call(arg: LuaValue): LuaValue = LuaSprite(if(arg.isstring()) { Gdx.files.internal(arg.checkjstring()) } else (arg as? LuaFile)?.backingHandle ?: throw LuaError("Expected String or LuaFile"))
     }
 
     private class SetFullscreen : OneArgFunction() {

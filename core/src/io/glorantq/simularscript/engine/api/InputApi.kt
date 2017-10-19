@@ -44,7 +44,6 @@ class InputApi : TwoArgFunction() {
     private class IsKeyPressed : OneArgFunction() {
         override fun call(arg: LuaValue): LuaValue {
             val char: String = if(arg.checkstring().tojstring().isEmpty()) { throw LuaError("Provide a key") } else { arg.checkstring().tojstring() }
-
             return LuaValue.valueOf(Gdx.input.isKeyPressed(Input.Keys.valueOf(char.toUpperCase())))
         }
     }

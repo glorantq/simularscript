@@ -14,10 +14,9 @@
       "sourceDirectory": "src/",
       "sourceFiles": [
         "main",
-        "winScreen",
-        "test"
+        "winScreen"
       ],
-      "mainFile": "test"
+      "mainFile": "main"
     }
   },
 
