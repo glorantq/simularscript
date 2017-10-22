@@ -95,14 +95,14 @@ Gerber Lóránt Viktor</p>
 <p><a href="-set-position/index.html">SetPosition</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">SetPosition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+<code><span class="keyword">class </span><span class="identifier">SetPosition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LibFunction</span></code></td>
 </tr>
 <tr>
 <td>
 <p><a href="-set-size/index.html">SetSize</a></p>
 </td>
 <td>
-<code><span class="keyword">class </span><span class="identifier">SetSize</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OneArgFunction</span></code></td>
+<code><span class="keyword">class </span><span class="identifier">SetSize</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LibFunction</span></code></td>
 </tr>
 <tr>
 <td>
@@ -142,7 +142,7 @@ Gerber Lóránt Viktor</p>
 <p><a href="-init-.html">&lt;init&gt;</a></p>
 </td>
 <td>
-<code><span class="identifier">LuaSprite</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$<init>(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<code><span class="identifier">LuaSprite</span><span class="symbol">(</span><span class="identifier" id="io.glorantq.simularscript.engine.api.graphics.LuaSprite$<init>(com.badlogic.gdx.files.FileHandle)/handle">handle</span><span class="symbol">:</span>&nbsp;<span class="identifier">FileHandle</span><span class="symbol">)</span></code>
 <p>Sprite wrapper for Lua scripts</p>
 </td>
 </tr>
@@ -235,6 +235,18 @@ Gerber Lóránt Viktor</p>
 </td>
 <td>
 <code><span class="keyword">val </span><span class="identifier">engine</span><span class="symbol">: </span><a href="../../io.glorantq.simularscript/-s-s-engine/index.html"><span class="identifier">SSEngine</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extension Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../io.glorantq.simularscript.utils/org.luaj.vm2.-lua-value/to-any.html">toAny</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">LuaValue</span><span class="symbol">.</span><span class="identifier">toAny</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
 </tr>
 </tbody>
 </table>

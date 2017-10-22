@@ -9,11 +9,13 @@ $dokka.location:io.glorantq.simularscript.utils$hexToRGB(kotlin.Int)io.glorantq
 $dokka.location:io.glorantq.simularscript.utils$rgbToOGL(kotlin.Int)io.glorantq.simularscript.utils/kotlin.-int/rgb-to-o-g-l.html
 $dokka.location:io.glorantq.simularscript.utils$roundToNearest(kotlin.Number, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-number/round-to-nearest.html
 $dokka.location:io.glorantq.simularscript.utils$split(kotlin.String, kotlin.Int)io.glorantq.simularscript.utils/kotlin.-string/split.html
+$dokka.location:io.glorantq.simularscript.utils$toAny(org.luaj.vm2.LuaValue)io.glorantq.simularscript.utils/org.luaj.vm2.-lua-value/to-any.html
 io.glorantq.simularscript
 io.glorantq.simularscript.config
 io.glorantq.simularscript.engine
 io.glorantq.simularscript.engine.api
 io.glorantq.simularscript.engine.api.graphics
+io.glorantq.simularscript.engine.api.io
 io.glorantq.simularscript.engine.api.multifile
 io.glorantq.simularscript.engine.scripting
 io.glorantq.simularscript.input
